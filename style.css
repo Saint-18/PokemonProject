@@ -1,0 +1,101 @@
+* {
+box-sizing: border-box;
+}
+
+/* Create two equal columns that float next to each other */
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Create a class for the team member styling */
+.teamMember {
+    background-color: blue;
+    color: white;
+    border: 2px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+body {
+background-color: lightgray;
+}
+
+#Roster,
+#Search {
+padding: 20px;
+}
+
+#Roster {
+background-color: #3466AF;
+}
+
+#Search {
+background-color: #3460AA;
+}
+
+.teamMember:last-child {
+margin-bottom: 0px;
+}
+h2,
+h3 {
+margin-top: 0px;
+display: flex;
+justify-content: space-between;
+}
+
+p {
+margin: 12px;
+}
+
+.top-bar {
+    background-color: #FFCB05;
+}
+
+.header {
+text-align: center;
+}
+
+#Pokedex {
+list-style-type: none;
+padding: 0px;
+border: 1px solid #ddd;
+margin-bottom: 0px;
+}
+
+#Pokedex li {
+padding: 8px 16px;
+border-bottom: 1px solid #aaa;
+padding-left: 5%;
+padding-right: 5%;
+justify-content: space-between;
+display: flex;
+align-items: center;
+}
+
+#Pokedex li:last-child {
+border-bottom: none
+}
+
+#searchInput {
+    display: block; /* Aligns the button under the textarea element */
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-group {
+margin: 0px;
+padding: 0px 0px;
+display: flex;
+}
+
+.btn-group button {
+... (6 lines left)
