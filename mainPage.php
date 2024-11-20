@@ -113,8 +113,15 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
-
+echo "Connected successfully <br>";
+$sql = "select id, identifier, species_id from pokemon";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: "
+    . $row["identifier"]. " " . $row["species_id"]. "<br>";
+    }
+}  
 // Close connection
 mysqli_close($conn);
 ?>
