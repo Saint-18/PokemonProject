@@ -92,10 +92,15 @@ border-bottom: none
 }
 
 .btn-group {
-margin: 0px;
-padding: 0px 0px;
-display: flex;
+	margin: 0px;
+	padding: 0px 0px;
+	display: flex;
 }
 
 .btn-group button {
-... (6 lines left)
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px 6px;
+}
