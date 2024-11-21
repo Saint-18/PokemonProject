@@ -95,7 +95,7 @@ Pokemon Team Builder
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-                echo "Connected successfully <br>";
+                //echo "Connected successfully <br>";
                 $sql = "select id, identifier, species_id from pokemon";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
