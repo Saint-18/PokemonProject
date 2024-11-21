@@ -100,7 +100,7 @@ Pokemon Team Builder
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo "<li>". $row["identifier"]. "</li> <br>";
+                        echo "<li>". $row["identifier"]. "</li>";
                     }
                 }  
                 // Close connection
