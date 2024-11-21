@@ -81,15 +81,31 @@ Pokemon Team Builder
             <input type="text" id="searchInput" onkeyup="listFilter()" placeholder="Search for Pokemon..">
     
             <ul id="Pokedex">
-                <li>Bulbasaur</li>
-                <li>Ivysaur</li>
-                <li>Venasaur</li>
-                <li>Pikachu</li>
-                <li>Raichu</li>
-                <li>Jigglypuff</li>
-                <li>Wigglytuff</li>
-                <li>Mew</li>
-                <li>Mewtwo</li>
+            <?php
+                // Database credentials
+                $servername = "localhost";
+                $username = "root";
+                $password = "Zekrom18!?!";
+                $dbname = "pokemon-database";
+                
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                echo "Connected successfully <br>";
+                $sql = "select id, identifier, species_id from pokemon";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<li>". $row["identifier"]. "</li> <br>";
+                    }
+                }  
+                // Close connection
+                mysqli_close($conn);
+            ?>
             </ul> 
         </div>
     </div>
@@ -99,29 +115,4 @@ Pokemon Team Builder
 
 </html>
 
-<?php
-// Database credentials
-$servername = "localhost";
-$username = "root";
-$password = "Zekrom18!?!";
-$dbname = "pokemon-database";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully <br>";
-$sql = "select id, identifier, species_id from pokemon";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: "
-    . $row["identifier"]. " " . $row["species_id"]. "<br>";
-    }
-}  
-// Close connection
-mysqli_close($conn);
-?>
