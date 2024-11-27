@@ -1,12 +1,11 @@
 <!-- 
-
 Sources:
 
 Double column layout: https://www.w3schools.com/howto/howto_css_two_columns.asp
 List filters: https://www.w3schools.com/howto/howto_js_filter_lists.asp
 Classes reference for .teamMember class: https://www.w3schools.com/html/html_classes.asp
 
- -->
+-->
 
 <!DOCTYPE html>
 <html>
@@ -96,19 +95,16 @@ Pokemon Team Builder
                     die("Connection failed: " . mysqli_connect_error());
                 }
                 //echo "Connected successfully <br>";
-                $sql = "select id, identifier, species_id from pokemon";
-                $sql2 = "SELECT pokemon.id, pokemon.identifier, types.identifier
-                FROM 
+                $sql = "SELECT pokemon.id, pokemon.identifier AS pokemon_name, types.identifier AS type_name
+                FROM
                     pokemon
                 INNER JOIN pokemon_types ON pokemon.id = pokemon_types.pokemon_id
                 INNER JOIN types ON pokemon_types.type_id = types.id
                 ORDER BY pokemon.id;";
                 $result = $conn->query($sql);
-                $result2 = $conn->query($sql2);
-                if ($result->num_rows > 0 && $result2->num_rows > 0) {
+                if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        $row2 = $result2->fetch_assoc();
-                        echo "<li>". $row["identifier"]. "   " . $row2["identifier"]. "</li>";
+                        echo "<li>". $row["pokemon_name"]. "   " . $row["type_name"]. "</li>";
                     }
                 }  
                 // Close connection
