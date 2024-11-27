@@ -97,10 +97,18 @@ Pokemon Team Builder
                 }
                 //echo "Connected successfully <br>";
                 $sql = "select id, identifier, species_id from pokemon";
+                $sql2 = "SELECT pokemon.id, pokemon.identifier, types.identifier
+                FROM 
+                    pokemon
+                INNER JOIN pokemon_types ON pokemon.id = pokemon_types.pokemon_id
+                INNER JOIN types ON pokemon_types.type_id = types.id
+                ORDER BY pokemon.id;";
                 $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
+                $result2 = $conn->query($sql2);
+                if ($result->num_rows > 0 && $result2->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo "<li>". $row["identifier"]. "</li>";
+                        $row2 = $result2->fetch_assoc();
+                        echo "<li>". $row["identifier"]. "   " . $row2["identifier"]. "</li>";
                     }
                 }  
                 // Close connection
