@@ -1,5 +1,5 @@
 * {
-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* Create two equal columns that float next to each other */
@@ -22,37 +22,38 @@ box-sizing: border-box;
     border: 2px solid black;
     padding: 5px;
     margin-bottom: 5px;
+    border-radius: 4px; /* Rounds corners */
 }
 
 body {
-background-color: lightgray;
+	background-color: lightgray;
 }
 
 #Roster,
-#Search {
-padding: 20px;
+#Modular {
+	padding: 20px;
 }
 
 #Roster {
-background-color: #3466AF;
+	background-color: #3466AF;
 }
 
-#Search {
-background-color: #3460AA;
+#Modular {
+	background-color: #3460AA;
 }
 
 .teamMember:last-child {
-margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 h2,
 h3 {
-margin-top: 0px;
-display: flex;
-justify-content: space-between;
+	margin-top: 0px;
+	display: flex;
+	justify-content: space-between;
 }
 
 p {
-margin: 12px;
+	margin: 12px;
 }
 
 .top-bar {
@@ -60,28 +61,41 @@ margin: 12px;
 }
 
 .header {
-text-align: center;
+	text-align: center;
 }
 
 #Pokedex {
-list-style-type: none;
-padding: 0px;
-border: 1px solid #ddd;
-margin-bottom: 0px;
+	list-style-type: none;
+	padding: 0px;
+	border: 1px solid #ddd;
+	margin-bottom: 0px;
+	border-radius: 4px; /* Rounds corners */
+	
 }
 
 #Pokedex li {
-padding: 8px 16px;
-border-bottom: 1px solid #aaa;
-padding-left: 5%;
-padding-right: 5%;
-justify-content: space-between;
-display: flex;
-align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr auto; /* Define three columns */
+    gap: 10px; /* Add space between columns */
+    align-items: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid #aaa;
 }
 
 #Pokedex li:last-child {
-border-bottom: none
+    border-bottom: none;
+}
+
+.pokemon-name {
+    text-align: left; /* Align to the left */
+}
+
+.type-name {
+    text-align: center; /* Align to the center of its column */
+}
+
+#Pokedex li button {
+    justify-self: end; /* Align the button to the end of its column */
 }
 
 #searchInput {
@@ -102,5 +116,36 @@ border-bottom: none
 	margin-right: 5px;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	padding: 0px 6px;
+	padding: 6px;
+}
+
+.heading-with-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.heading-with-buttons h2,
+.heading-with-buttons h3 {
+	margin: 0px;
+}
+
+.content-container img {
+	overflow: hidden;
+}
+
+.four-column-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.pokemon-column {
+    flex: 1; /* Each column takes equal space */
+    text-align: center;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 4px; /* Rounded corners */
+    font-size: 14px;
 }
