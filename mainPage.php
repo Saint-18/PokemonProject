@@ -1,11 +1,10 @@
-
 <!-- 
 
 Sources:
 
 Double column layout: https://www.w3schools.com/howto/howto_css_two_columns.asp
 List filters: https://www.w3schools.com/howto/howto_js_filter_lists.asp
-Classes reference for .teamMember class: https://www.w3schools.com/html/html_classes.asp
+Classes reference for numerous class usage: https://www.w3schools.com/html/html_classes.asp
 
  -->
 
@@ -38,22 +37,13 @@ Classes reference for .teamMember class: https://www.w3schools.com/html/html_cla
 					<button>Load</button>
 				</div>
 			</div>
+
 			<div class="teamMember" id=1 data-inUse=true>
-				<h3>Pokemon 1</h3>
-				Some text..<br> Some more text..<br> Some more text..<br> Some more
-				text..
-			</div>
-			<div class="teamMember" id=2 data-inUse=true>
-				<h3>Pokemon 2</h3>
-				Some text..<br> Some more text..<br> Some more text..<br> Some more
-				text..
-			</div>
-			<div class="teamMember" id=3 data-inUse=true>
 				<div class="heading-with-buttons">
 					<h3>Jigglypuff</h3>
 					<div class="btn-group">
 						<button>Edit</button>
-						<button>Remove</button>
+						<button data-id="1" onclick="clearMemberById(this)">Remove</button>
 					</div>
 				</div>
 
@@ -75,19 +65,116 @@ Classes reference for .teamMember class: https://www.w3schools.com/html/html_cla
 					</div>
 				</div>
 			</div>
+
+			<div class="teamMember" id=2 data-inUse=false>
+				<div class="heading-with-buttons">
+					<h3></h3>
+					<div class="btn-group">
+						<button>Edit</button>
+						<button data-id="2" onclick="clearMemberById(this)">Remove</button>
+					</div>
+				</div>
+
+				<div class="four-column-layout">
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+				</div>
+			</div>
+			
+			<div class="teamMember" id=3 data-inUse=false>
+				<div class="heading-with-buttons">
+					<h3></h3>
+					<div class="btn-group">
+						<button>Edit</button>
+						<button data-id="3" onclick="clearMemberById(this)">Remove</button>
+					</div>
+				</div>
+
+				<div class="four-column-layout">
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+				</div>
+			</div>
+			
 			<div class="teamMember" id=4 data-inUse=false>
-				<h3>Empty</h3>
+				<div class="heading-with-buttons">
+					<h3></h3>
+					<div class="btn-group">
+						<button>Edit</button>
+						<button data-id="4" onclick="clearMemberById(this)">Remove</button>
+					</div>
+				</div>
+
+				<div class="four-column-layout">
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+				</div>
 			</div>
+			
 			<div class="teamMember" id=5 data-inUse=false>
-				<h3>Empty</h3>
+				<div class="heading-with-buttons">
+					<h3></h3>
+					<div class="btn-group">
+						<button>Edit</button>
+						<button data-id="5" onclick="clearMemberById(this)">Remove</button>
+					</div>
+				</div>
+
+				<div class="four-column-layout">
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+				</div>
 			</div>
+			
 			<div class="teamMember" id=6 data-inUse=false>
-				<h3>Empty</h3>
+				<div class="heading-with-buttons">
+					<h3></h3>
+					<div class="btn-group">
+						<button>Edit</button>
+						<button data-id="6" onclick="clearMemberById(this)">Remove</button>
+					</div>
+				</div>
+
+				<div class="four-column-layout">
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+					<div class="pokemon-column">
+					</div>
+				</div>
 			</div>
+
 		</div>
 		<div class="column" id="Modular">
 			<div class="heading-with-buttons">
-				<h2>Add Pokemon</h2>
+				<h2>Search</h2>
 				<div class="btn-group">
 					<button onclick="loadContent('search')">Search</button>
 					<button onclick="loadContent('type_chart')">Type Chart</button>
@@ -117,13 +204,9 @@ Classes reference for .teamMember class: https://www.w3schools.com/html/html_cla
 						<div id="search-name">Venasaur</div>
 						<div id="search-type">Grass/Poison</div>
 					</li>
-					<li>
-						<span id="pokemon-name">Pikachu</span>
-						<span id="type-name">Electric</span>
+					<li><span id="pokemon-name">Pikachu</span> <span id="type-name">Electric</span>
 					</li>
-					<li>
-						<span id="pokemon-name">Raichu</span>
-						<span id="type-name">Electric</span>
+					<li><span id="pokemon-name">Raichu</span> <span id="type-name">Electric</span>
 					</li>
 					<li>
 						<div id="search-name">Jigglypuff</div>
@@ -135,9 +218,9 @@ Classes reference for .teamMember class: https://www.w3schools.com/html/html_cla
 					</li>
 				
 					<?php
-                    // require_once 'database_functions.php'; // Reference file for all database functions
-                    // getPokemonList();
-                    ?>
+    // require_once 'database_functions.php'; // Reference file for all database functions
+    // getPokemonList();
+    ?>
 				
 				</ul>
 
@@ -151,3 +234,5 @@ Classes reference for .teamMember class: https://www.w3schools.com/html/html_cla
 <script src="pageUpdates.js"></script>
 
 </html>
+
+

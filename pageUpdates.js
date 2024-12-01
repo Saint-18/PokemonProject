@@ -1,3 +1,31 @@
+function clearMemberById(button) {
+    // Get the teamMember ID from the button's data attribute
+    const id = button.dataset.id;
+
+    // Locate the teamMember element by its ID
+    const teamMember = document.getElementById(id);
+
+    if (teamMember) {
+        // Clear the <h3> inside the 'heading-with-buttons'
+        const header = teamMember.querySelector(".heading-with-buttons h3");
+        if (header) {
+            header.textContent = ""; // Clear the header text
+        }
+
+        // Clear all the <div class="pokemon-column"> elements
+        const pokemonColumns = teamMember.querySelectorAll(".pokemon-column");
+        pokemonColumns.forEach(column => {
+            column.innerHTML = ""; // Clear the content of each column
+        });
+
+        // Optionally update the data-inUse attribute
+        teamMember.dataset.inuse = 'false';
+    } else {
+        console.error(`No '.teamMember' element found with ID: ${id}`);
+    }
+}
+
+
 function loadContent(argument) {
 	
 	const container = document.getElementById('content-container');
@@ -6,6 +34,9 @@ function loadContent(argument) {
 	
 	if (argument === 'search') {
 		
+		// Update the header element manually
+		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Search';
+
 		const contentHTML = `
 		
 		<p>Search for a Pokemon to add using the box below.</p>
@@ -57,6 +88,10 @@ function loadContent(argument) {
 	
 	
 	if (argument === 'type_chart') {
+		
+		// Update the header element manually
+		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Type Chart';
+				
 		// Create an image element
 		const contentHTML = `
 		
@@ -70,11 +105,17 @@ function loadContent(argument) {
 	}
 	
 	if (argument === 'analysis') {
+		// Update the header element manually
+		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Analysis';
 		
+		// TODO: Analysis Page
 	}
 	
 	if (argument === 'help') {
+		// Update the header element manually
+		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Help';
 		
+		// TODO: Help page
 	}
 	
 }
