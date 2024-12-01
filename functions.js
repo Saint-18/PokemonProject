@@ -26,7 +26,7 @@ function add_buttons() {
         // Create a new button element
         let button = document.createElement('button');
         button.textContent = 'Add'; // Set the button text
-button.style.marginLeft = '10px'; // Add left margin to separate from text
+		button.style.marginLeft = '10px'; // Add left margin to separate from text
         button.onclick = function() {
             addButtonClicked(li[i], this); // Call a function with the current <li> element and the button itself
         };
@@ -38,8 +38,8 @@ button.style.marginLeft = '10px'; // Add left margin to separate from text
 
 function addButtonClicked(item, button) {
     // Update the button text and disable it
-
-// Allow the user to add the same Pokemon to the team multiple times
+	
+	// Allow the user to add the same Pokemon to the team multiple times
     //button.textContent = 'Added!';
     // button.disabled = true; 
 
