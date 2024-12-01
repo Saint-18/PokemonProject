@@ -32,13 +32,18 @@ function getPokemonList() {
 		exit(); // No connection, exit the function
 	}
 
-	$sql = "select id, identifier, species_id from pokemon";
+	$sql = "SELECT pokemon.id, pokemon.identifier AS pokemon_name, types.identifier AS type_name
+	FROM
+	    pokemon
+	INNER JOIN pokemon_types ON pokemon.id = pokemon_types.pokemon_id
+	INNER JOIN types ON pokemon_types.type_id = types.id
+	ORDER BY pokemon.id;";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	    while($row = $result->fetch_assoc()) {
-	        echo "<li>". $row["identifier"]. "</li>";
+	        echo "<li>". $row["pokemon_name"]. "   " . $row["type_name"]. "</li>";
 	    }
-	}  
+	}
 	
 	dbCloseConnection($conn); // Close the connection
 
