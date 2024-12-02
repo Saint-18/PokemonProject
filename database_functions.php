@@ -46,9 +46,20 @@ function getPokemonList()
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($previousPokemon == $row["pokemon_name"]) {
-                echo "/ " . $row["type_name"] . "</li>";
+				// If the name is the same as the previous one, append a second type
+				echo " / " . $row["type_name"];
             } else {
-                echo "<li>" . $row["id"] . ": " . $row["pokemon_name"] . " " . $row["type_name"] . " ";
+				
+				// Close the previous list item if it's not the first
+				if(isset($previousPokemon)) {
+					echo "</div></li>";
+				}
+				
+				// Start a new list item
+				echo "<li>";
+				echo "<div id='search-name'>" . $row["id"] . ": " . $row["pokemon_name"]) . "</div>";
+				echo "<div id='search-type'>" . $row["type_name"];
+
             }
             $previousPokemon = $row["pokemon_name"];
         }
