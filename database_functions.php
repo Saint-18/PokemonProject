@@ -48,13 +48,37 @@ function getPokemonList()
             if ($previousPokemon == $row["pokemon_name"]) {
                 echo "/ " . $row["type_name"] . "</li>";
             } else {
-                echo "<li>" . $row["pokemon_name"] . " " . $row["type_name"] . " ";
+                echo "<li>" . $row["id"] . ": " . $row["pokemon_name"] . " " . $row["type_name"] . " ";
             }
             $previousPokemon = $row["pokemon_name"];
         }
     }
 
     dbCloseConnection($conn); // Close the connection
+}
+
+function getPokemonName($pokemonID)
+{
+    $conn = dbOpenConnection(); // Open the connection
+    if (! $conn) {
+        exit(); // No connection, exit the function
+    }
+
+    $name = "";
+    $sql = "SELECT pokemon.id, pokemon.identifier AS pokemon_name
+	FROM
+	    pokemon
+	ORDER BY pokemon.id;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($pokemonID == $row["id"]) {
+                $name = $row["pokemon_name"];
+            }
+        }
+    }
+    dbCloseConnection($conn); // Close the connection
+    return $name;
 }
 
 // end getPokemonList()
@@ -90,7 +114,7 @@ function getPokemonTypeOne($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $type = $row["type_name"];
             }
         }
@@ -116,7 +140,7 @@ function getPokemonTypeTwo($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $type = $row["type_name"];
             }
         }
@@ -124,18 +148,27 @@ function getPokemonTypeTwo($pokemonID)
     dbCloseConnection($conn); // Close the connection
     return $type;
 }
-function getPokemonStats($pokemonID){
+
+function getPokemonStats($pokemonID)
+{
     $hp = getPokemonHealth($pokemonID);
     $Attack = getPokemonAttack($pokemonID);
     $Defense = getPokemonDefense($pokemonID);
     $SpecialAttack = getPokemonSpecialAttack($pokemonID);
     $SpecialDefense = getPokemonSpecialDefense($pokemonID);
     $Speed = getPokemonSpeed($pokemonID);
-    
-    $StatArray = array($hp, $Attack, $Defense, $SpecialAttack, $SpecialDefense, $Speed); 
+
+    $StatArray = array(
+        $hp,
+        $Attack,
+        $Defense,
+        $SpecialAttack,
+        $SpecialDefense,
+        $Speed
+    );
     return $StatArray;
-    
 }
+
 function getPokemonHealth($pokemonID)
 {
     $stat = "";
@@ -153,7 +186,7 @@ function getPokemonHealth($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
@@ -179,7 +212,7 @@ function getPokemonAttack($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
@@ -205,7 +238,7 @@ function getPokemonDefense($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
@@ -231,7 +264,7 @@ function getPokemonSpecialAttack($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
@@ -257,7 +290,7 @@ function getPokemonSpecialDefense($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
@@ -283,7 +316,7 @@ function getPokemonSpeed($pokemonID)
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($pokemonID == $row["pokemon_name"]) {
+            if ($pokemonID == $row["id"]) {
                 $stat = $row["base_stat"];
             }
         }
