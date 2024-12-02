@@ -36,16 +36,18 @@ function add_buttons() {
     }
 }
 
-function addButtonClicked(item, button) {
-    // Update the button text and disable it
+function addButtonClicked(item) {
 	
-	// Allow the user to add the same Pokemon to the team multiple times
-    //button.textContent = 'Added!';
-    // button.disabled = true; 
+	const searchNameDiv = item.querySelector('#search-name');
 
-    // Only pass the original text of the <li> element
-    const itemText = item.textContent.replace(button.textContent, "").trim();
-    updateTeamMembers(itemText);
+	if (searchNameDiv) {
+	    // Get the text content of the <div> and split it by ":"
+	    const textContent = searchNameDiv.textContent.split(':')[0].trim();
+
+	    // Return or use the extracted number
+	    updateTeamMembers(textContent); // In this case, it will return "1"
+	}
+	
 }
 
 function updateTeamMembers(name) {

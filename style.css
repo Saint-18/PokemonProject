@@ -135,7 +135,7 @@ p {
 	overflow: hidden;
 }
 
-.four-column-layout {
+.multi-column-layout {
     display: flex;
     justify-content: space-between;
     gap: 8px;
