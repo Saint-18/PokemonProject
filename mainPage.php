@@ -76,17 +76,13 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 				</div>
 
 				<div class="four-column-layout">
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
 				</div>
 			</div>
-			
+
 			<div class="teamMember" id=3 data-inUse=false>
 				<div class="heading-with-buttons">
 					<h3></h3>
@@ -97,17 +93,13 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 				</div>
 
 				<div class="four-column-layout">
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
 				</div>
 			</div>
-			
+
 			<div class="teamMember" id=4 data-inUse=false>
 				<div class="heading-with-buttons">
 					<h3></h3>
@@ -118,17 +110,13 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 				</div>
 
 				<div class="four-column-layout">
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
 				</div>
 			</div>
-			
+
 			<div class="teamMember" id=5 data-inUse=false>
 				<div class="heading-with-buttons">
 					<h3></h3>
@@ -139,17 +127,13 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 				</div>
 
 				<div class="four-column-layout">
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
 				</div>
 			</div>
-			
+
 			<div class="teamMember" id=6 data-inUse=false>
 				<div class="heading-with-buttons">
 					<h3></h3>
@@ -160,14 +144,10 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 				</div>
 
 				<div class="four-column-layout">
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
-					<div class="pokemon-column">
-					</div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
+					<div class="pokemon-column"></div>
 				</div>
 			</div>
 
@@ -191,41 +171,15 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 					placeholder="Search for Pokemon..">
 
 				<ul id="Pokedex">
-
-					<li>
-						<div id="search-name">Bulbasaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li>
-						<div id="search-name">Ivysaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li>
-						<div id="search-name">Venasaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li><span id="pokemon-name">Pikachu</span> <span id="type-name">Electric</span>
-					</li>
-					<li><span id="pokemon-name">Raichu</span> <span id="type-name">Electric</span>
-					</li>
-					<li>
-						<div id="search-name">Jigglypuff</div>
-						<div id="search-type">Normal/Fairy</div>
-					</li>
-					<li>
-						<div id="search-name">Wigglytuff</div>
-						<div id="search-type">Normal/Fairy</div>
-					</li>
 				
 					<?php
+    include 'database_functions.php';
     // require_once 'database_functions.php'; // Reference file for all database functions
-    // getPokemonList();
+    getPokemonList();
     ?>
 				
 				</ul>
-
 			</div>
-
 		</div>
 	</div>
 </body>
@@ -234,5 +188,7 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 <script src="pageUpdates.js"></script>
 
 </html>
+
+
 
 
