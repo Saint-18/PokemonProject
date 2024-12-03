@@ -61,7 +61,7 @@ function updateTeamMembers(name) {
             // Update 'data-inUse' to 'true'
             member.setAttribute('data-inUse', 'true');
             
-            // Add some data to the <h2> tag
+            // Add some data to the <h3> tag
             const h3 = member.querySelector('h3');
             if (h3) {
                 h3.textContent = name; // Change this to the text/data you want to add

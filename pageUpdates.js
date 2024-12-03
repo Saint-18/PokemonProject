@@ -11,14 +11,20 @@ function clearMemberById(button) {
         if (header) {
             header.textContent = ""; // Clear the header text
         }
+		
+		// Reset the ability dropdown item
+		const abilityDropdowns = teamMember.querySelectorAll("[id^='ability-dropdown']");
+		abilityDropdowns.forEach(select => {
+		    select.selectedIndex = 0; // Set to default
+		});
+		
+		// Reset all four move dropdown items
+		const moveDropdowns = teamMember.querySelectorAll("[id^='move-dropdown']");
+		moveDropdowns.forEach(dropdown => {
+		    dropdown.selectedIndex = 0; // Set to default
+		});
 
-        // Clear all the <div class="pokemon-column"> elements
-        const pokemonColumns = teamMember.querySelectorAll(".pokemon-column");
-        pokemonColumns.forEach(column => {
-            column.innerHTML = ""; // Clear the content of each column
-        });
-
-        // Optionally update the data-inUse attribute
+        // Set the logic flag to false so the team member slot can be used again
         teamMember.dataset.inuse = 'false';
     } else {
         console.error(`No '.teamMember' element found with ID: ${id}`);
@@ -46,35 +52,6 @@ function loadContent(argument) {
 
 						<ul id="Pokedex">
 
-							<li>
-								<div id="search-name">Bulbasaur</div>
-								<div id="search-type">Grass/Poison</div>
-							</li>
-							<li>
-								<div id="search-name">Ivysaur</div>
-								<div id="search-type">Grass/Poison</div>
-							</li>
-							<li>
-								<div id="search-name">Venasaur</div>
-								<div id="search-type">Grass/Poison</div>
-							</li>
-							<li>
-								<span id="pokemon-name">Pikachu</span>
-								<span id="type-name">Electric</span>
-							</li>
-							<li>
-								<span id="pokemon-name">Raichu</span>
-								<span id="type-name">Electric</span>
-							</li>
-							<li>
-								<div id="search-name">Jigglypuff</div>
-								<div id="search-type">Normal/Fairy</div>
-							</li>
-							<li>
-								<div id="search-name">Wigglytuff</div>
-								<div id="search-type">Normal/Fairy</div>
-							</li>
-						
 							<?php
 		                    // require_once 'database_functions.php'; // Reference file for all database functions
 		                    // getPokemonList();
@@ -102,20 +79,6 @@ function loadContent(argument) {
 		container.innerHTML = contentHTML;
 
 
-	}
-	
-	if (argument === 'analysis') {
-		// Update the header element manually
-		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Analysis';
-		
-		// TODO: Analysis Page
-	}
-	
-	if (argument === 'help') {
-		// Update the header element manually
-		document.querySelector('#Modular .heading-with-buttons h2').textContent = 'Help';
-		
-		// TODO: Help page
 	}
 	
 }
