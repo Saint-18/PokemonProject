@@ -46,20 +46,13 @@ function getPokemonList()
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($previousPokemon == $row["pokemon_name"]) {
-				// If the name is the same as the previous one, append a second type
-				echo " / " . $row["type_name"];
+                // If the name is the same as the previous one, append a second type
+                echo " / " . $row["type_name"];
             } else {
-				
-				// Close the previous list item if it's not the first
-				if(isset($previousPokemon)) {
-					echo "</div></li>";
-				}
-				
-				// Start a new list item
-				echo "<li>";
-				echo "<div id='search-name'>" . $row["id"] . ": " . $row["pokemon_name"]) . "</div>";
-				echo "<div id='search-type'>" . $row["type_name"];
-
+                // Start a new list item
+                echo "<li>";
+                echo "<div id='search-name'>" . $row["id"] . ": " . $row["pokemon_name"] . "</div>";
+                echo "<div id='search-type'>" . $row["type_name"];
             }
             $previousPokemon = $row["pokemon_name"];
         }
@@ -169,7 +162,9 @@ function getPokemonStats($pokemonID)
     $SpecialDefense = getPokemonSpecialDefense($pokemonID);
     $Speed = getPokemonSpeed($pokemonID);
 
+    $BST = $hp + $Attack + $Defense + $SpecialAttack + $SpecialDefense + $Speed;
     $StatArray = array(
+        $BST,
         $hp,
         $Attack,
         $Defense,
@@ -342,9 +337,26 @@ function getPokemonMoves($pokemonID)
     if (! $conn) {
         exit(); // No connection, exit the function
     }
-
+    $moveArray[] = " ";
+    $sql = "SELECT pokemon.identifier AS pokemon_name, pokemon.id, moves.identifier AS move, types.identifier as Type, move_damage_classes.identifier AS Damage_Type
+    FROM
+    pokemon
+    INNER JOIN pokemon_moves ON pokemon.id = pokemon_moves.pokemon_id
+    INNER JOIN moves ON moves.id = pokemon_moves.move_id
+    INNER Join types ON types.id = moves.type_id
+    Inner Join move_damage_classes ON move_damage_classes.id = moves.damage_class_id
+    ORDER BY pokemon.id;";
+    //allows calls to name, pokemon id, move, type, and damage type.
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($pokemonID == $row["id"]) {
+                $moveArray[] = $row["move"];
+            }
+        }
+    }
     dbCloseConnection($conn); // Close the connection
-    return " ";
+    return $moveArray;
 }
 
 function getPokemonAbilities($pokemonID)
@@ -353,9 +365,22 @@ function getPokemonAbilities($pokemonID)
     if (! $conn) {
         exit(); // No connection, exit the function
     }
-
+    $abilityArray[] = "";
+    $sql = "SELECT pokemon.identifier AS pokemon_name, pokemon.id, abilities.identifier AS pokemon_ability
+    FROM
+    pokemon
+    INNER JOIN pokemon_abilities ON pokemon.id = pokemon_abilities.pokemon_id
+    INNER JOIN abilities ON abilities.id = pokemon_abilities.ability_id
+    ORDER BY pokemon.id;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($pokemonID == $row["id"]) {
+                $abilityArray = $row["pokemon_ability"];
+            }
+        }
+    }
     dbCloseConnection($conn); // Close the connection
-    return " ";
+    return $abilityArray;
 }
-
 ?>
