@@ -2,7 +2,6 @@
 
 function dbOpenConnection()
 {
-
     // Database credentials
     $servername = "localhost";
     $username = "root";
@@ -85,22 +84,6 @@ function getPokemonName($pokemonID)
     return $name;
 }
 
-// end getPokemonList()
-function getPokemonDetails($pokemonID)
-{
-    $conn = dbOpenConnection(); // Open the connection
-    if (! $conn) {
-        exit(); // No connection, exit the function
-    }
-
-    $sql = ""; // TODO: Insert the SQL statment required
-    $result = $conn->query($sql);
-
-    // TODO: Parse the $result variable OR return it to be parsed elsewhere
-
-    dbCloseConnection($conn); // Close the connection
-}
-
 function getPokemonTypeOne($pokemonID)
 {
     $conn = dbOpenConnection(); // Open the connection
@@ -153,6 +136,27 @@ function getPokemonTypeTwo($pokemonID)
     return $type;
 }
 
+function getAllStats($pokemonID)
+{
+    $conn = dbOpenConnection();
+    $pokemonAllStatsArray[] = "";
+    $sql = "SELECT pokemon.id, pokemon.identifier AS pokemon_name, types.identifier AS type_name
+	FROM
+	    pokemon
+	INNER JOIN pokemon_types ON pokemon.id = pokemon_types.pokemon_id
+	INNER JOIN types ON pokemon_types.type_id = types.id
+	ORDER BY pokemon.id;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Start a new list item
+            $pokemonAllStatsArray[] = getPokemonStats($row["id"]);
+        }
+    }
+    dbCloseConnection($conn); // Close the connection
+    return $pokemonAllStatsArray;
+}
+
 function getPokemonStats($pokemonID)
 {
     $hp = getPokemonHealth($pokemonID);
@@ -164,6 +168,7 @@ function getPokemonStats($pokemonID)
 
     $BST = $hp + $Attack + $Defense + $SpecialAttack + $SpecialDefense + $Speed;
     $StatArray = array(
+        $pokemonID,
         $BST,
         $hp,
         $Attack,
@@ -346,7 +351,7 @@ function getPokemonMoves($pokemonID)
     INNER Join types ON types.id = moves.type_id
     Inner Join move_damage_classes ON move_damage_classes.id = moves.damage_class_id
     ORDER BY pokemon.id;";
-    //allows calls to name, pokemon id, move, type, and damage type.
+    // allows calls to name, pokemon id, move, type, and damage type.
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {

@@ -10,42 +10,19 @@ Classes reference for numerous class usage: https://www.w3schools.com/html/html_
 
 <!--  Initial PHP block to set variables needed to display the page  -->
 <?php
-// require_once 'database_functions.php'; // Reference file for all database functions
+include 'database_functions.php'; // Reference file for all database functions
 
-// $abilityList = getPokemonAbilities(); // Creates the ability list for use in the dropdown
+$abilityList[] = getPokemonAbilities(2); // Creates the ability list for use in the dropdown
 // TODO: Delete this test data below
-// TODO: Ctrl+F for $testAbilities (dummy variable right below this), replace with $abilityList above (actual DB call)
-$testAbilities = [
-    "Aftermath",
-    "Battle Armor",
-    "Forecast",
-    "Frisk",
-    "Inner Focus"
-];
+// TODO: Ctrl+F for $abilityList (dummy variable right below this), replace with $abilityList above (actual DB call)
 
-// $moveList = getPokemonMoves(); // Creates the move list for use in the dropdown
+$moveList = getPokemonMoves(1); // Creates the move list for use in the dropdown
 // TODO: Delete this test data below
-// TODO: Ctrl+F for $testMoves (dummy variable right below this), replace with $moveList above (actual DB call)
-$testMoves = [
-    "Thunderbolt",
-    "Blizzard",
-    "Agility",
-    "Earthquake",
-    "Toxic",
-    "Defense Curl"
-];
+// TODO: Ctrl+F for $moveList (dummy variable right below this), replace with $moveList above (actual DB call)
 
 // TODO: Create master stat list variable
 // TODO: Delete this test data below
-$testStats = [
-    'BST' => 325, // Total Base Stats (BST)
-    'HP' => 50,    // Health stat
-    'Attack' => 65,    // Attack stat
-    'Defense' => 55,   // Defense stat
-    'SpecialAttack' => 45, // Special Attack stat
-    'SpecialDefense' => 50, // Special Defense stat
-    'Speed' => 60    // Speed stat
-];
+$testStats = getPokemonStats(1);
 
 ?>
 
@@ -74,13 +51,7 @@ $testStats = [
 		<div class="column" id="Roster">
 			<div class="heading-with-buttons">
 				<h2>Your Team</h2>
-				<!--  TODO: Delete this functionality -->
-				<!--
-				<div class="btn-group">
-					<button>Save</button>
-					<button>Load</button>
-				</div>
-				-->
+
 			</div>
 
 			<div class="teamMember" id=1 data-inUse=false>
@@ -93,71 +64,60 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    echo "BST: " . $testStats[1] . "<br>";
+    echo "HP: " . $testStats[2] . "<br>";
+    echo "Attack: " . $testStats[3] . "<br>";
+    echo "Defense: " . $testStats[4] . "<br>";
+    echo "Special Attack: " . $testStats[5] . "<br>";
+    echo "Special Defense: " . $testStats[6] . "<br>";
+    echo "Speed: " . $testStats[7] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -172,71 +132,61 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    // echo "BST: " . $testStats['BST'] . "<br>";
+    echo "BST: " . $testStats['BST'] . "<br>";
+    echo "HP: " . $testStats['HP'] . "<br>";
+    echo "Attack: " . $testStats['Attack'] . "<br>";
+    echo "Defense: " . $testStats['Defense'] . "<br>";
+    echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
+    echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
+    echo "Speed: " . $testStats['Speed'] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -251,71 +201,60 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    echo "BST: " . $testStats['BST'] . "<br>";
+    echo "HP: " . $testStats['HP'] . "<br>";
+    echo "Attack: " . $testStats['Attack'] . "<br>";
+    echo "Defense: " . $testStats['Defense'] . "<br>";
+    echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
+    echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
+    echo "Speed: " . $testStats['Speed'] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -330,71 +269,60 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    echo "BST: " . $testStats['BST'] . "<br>";
+    echo "HP: " . $testStats['HP'] . "<br>";
+    echo "Attack: " . $testStats['Attack'] . "<br>";
+    echo "Defense: " . $testStats['Defense'] . "<br>";
+    echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
+    echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
+    echo "Speed: " . $testStats['Speed'] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -409,71 +337,60 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    echo "BST: " . $testStats['BST'] . "<br>";
+    echo "HP: " . $testStats['HP'] . "<br>";
+    echo "Attack: " . $testStats['Attack'] . "<br>";
+    echo "Defense: " . $testStats['Defense'] . "<br>";
+    echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
+    echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
+    echo "Speed: " . $testStats['Speed'] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -488,71 +405,60 @@ $testStats = [
 
 				<div class="multi-column-layout">
 					<div class="pokemon-column">
-						<label>Ability:</label>
-						<select id="ability-dropdown">
+						<label>Ability:</label> <select id="ability-dropdown">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testAbilities as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($abilityList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 					</div>
 					<div class="pokemon-column">
-						
-						<label>Move 1:</label>
-						<select id="move-dropdown-1">
+
+						<label>Move 1:</label> <select id="move-dropdown-1">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 2:</label>
-						<select id="move-dropdown-2">
+						</select> <label>Move 2:</label> <select id="move-dropdown-2">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 3:</label>
-						<select id="move-dropdown-3">
+						</select> <label>Move 3:</label> <select id="move-dropdown-3">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
-						</select>
-						
-						<label>Move 4:</label>
-						<select id="move-dropdown-4">
+						</select> <label>Move 4:</label> <select id="move-dropdown-4">
 							<option value="" selected disabled>Select an option</option>
                             <?php
-                                foreach ($testMoves as $item) {
-                                    echo "<option value=\"$item\">$item</option>";
-                                }
+                            foreach ($moveList as $item) {
+                                echo "<option value=\"$item\">$item</option>";
+                            }
                             ?>
 						</select>
 
 					</div>
 					<div class="pokemon-column">
 						<?php
-						    // TODO: Add stats function here with ID call
-						
-						    // echo "BST: " . $testStats['BST'] . "<br>";
-						    // echo "HP: " . $testStats['HP'] . "<br>";
-						    // echo "Attack: " . $testStats['Attack'] . "<br>";
-						    // echo "Defense: " . $testStats['Defense'] . "<br>";
-						    // echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
-						    // echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
-						    //echo "Speed: " . $testStats['Speed'] . "<br>";
-						?>
+    // TODO: Add stats function here with ID call
+
+    echo "BST: " . $testStats['BST'] . "<br>";
+    echo "HP: " . $testStats['HP'] . "<br>";
+    echo "Attack: " . $testStats['Attack'] . "<br>";
+    echo "Defense: " . $testStats['Defense'] . "<br>";
+    echo "Special Attack: " . $testStats['SpecialAttack'] . "<br>";
+    echo "Special Defense: " . $testStats['SpecialDefense'] . "<br>";
+    echo "Speed: " . $testStats['Speed'] . "<br>";
+    ?>
 					</div>
 				</div>
 			</div>
@@ -576,40 +482,11 @@ $testStats = [
 
 				<ul id="Pokedex">
 
-					<!-- TODO: Delete this dummy data below -->
-					<li>
-						<div id="search-name">1: Bulbasaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li>
-						<div id="search-name">2: Ivysaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li>
-						<div id="search-name">3: Venasaur</div>
-						<div id="search-type">Grass/Poison</div>
-					</li>
-					<li>
-						<div id="search-name">25: Pikachu</div>
-						<div id="search-name">Electric</div>
-					</li>
-					<li>
-						<div id="search-name">26: Raichu</div>
-						<div id="search-name">Electric</div>
-					</li>
-					<li>
-						<div id="search-name">48: Jigglypuff</div>
-						<div id="search-type">Normal/Fairy</div>
-					</li>
-					<li>
-						<div id="search-name">49: Wigglytuff</div>
-						<div id="search-type">Normal/Fairy</div>
-					</li>
-				    
+
 					<!-- TODO: Enable list function below -->
 					<?php
-                        // getPokemonList();
-                    ?>
+    getPokemonList();
+    ?>
 				
 				</ul>
 
@@ -623,5 +500,4 @@ $testStats = [
 <script src="pageUpdates.js"></script>
 
 </html>
-
 
